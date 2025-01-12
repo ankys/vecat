@@ -121,6 +121,8 @@ $
 三次元ベクトル$bold(a), bold(b), bold(c)$に対してスカラー三重積
 $
 bold(a) dot (bold(b) times bold(c))
+= bold(b) dot (bold(c) times bold(a))
+= bold(c) dot (bold(a) times bold(b))
 = det mat(bold(a), bold(b), bold(c))
 $
 とベクトル三重積
@@ -144,6 +146,8 @@ bold(a) dot (bold(b) times bold(c))
 = a_1 (b_2 c_3-b_3 c_2)+a_2 (b_3 c_1-b_1 c_3)+a_3 (b_1 c_2-b_2 c_1)
 $
 でこれは三重積$[bold(a), bold(b), bold(c)] = det mat(bold(a), bold(b), bold(c))$に他ならない。
+$bold(a), bold(b), bold(c)$の並びを巡回させても三重積の値は変化しないので、$bold(b) dot (bold(c) times bold(a))$や$bold(c) dot (bold(a) times bold(b))$も同じ値になる。
+
 また、ベクトル三重積についても
 $
 bold(a) times (bold(b) times bold(c))
@@ -156,6 +160,29 @@ bold(a) times (bold(b) times bold(c))
 	-vec((a_2 b_2+a_3 b_3)c_1, (a_3 b_3+a_1 b_1)c_2, (a_1 b_1+a_2 b_2)c_3) \
 &= (a_1 c_1+a_2 c_2+a_3 c_3)vec(b_1, b_2, b_3)-(a_1 b_1+a_2 b_2+a_3 b_3)vec(c_1, c_2, c_3) \
 &= (bold(a) dot bold(c))bold(b)-(bold(a) dot bold(b))bold(c)
+$
+である。
+]
+
+#remark[
+ベクトル三重積の式より、ベクトルの外積について結合法則は成り立たず、$bold(a) dot (bold(b) times bold(c))$と$(bold(a) dot bold(b)) times bold(c)$は一般には異なる。
+なお、次のヤコビ恒等式からこの二つの差もベクトル三重積で得られることがわかる。
+]
+
+#proposition([ヤコビ恒等式])[
+三次元ベクトル$bold(a), bold(b), bold(c)$に対して
+$
+bold(a) times (bold(b) times bold(c))+bold(b) times (bold(c) times bold(a))+bold(c) times (bold(a) times bold(b)) = bold(0)
+$
+が成り立つ。
+]
+
+#proof[
+ベクトル三重積の公式より
+$
+bold(a) times (bold(b) times bold(c))+bold(b) times (bold(c) times bold(a))+bold(c) times (bold(a) times bold(b))
+= ((bold(a) dot bold(c))bold(b)-(bold(a) dot bold(b))bold(c))+((bold(b) dot bold(a))bold(c)-(bold(b) dot bold(c))bold(a))+((bold(c) dot bold(b))bold(a)-(bold(c) dot bold(a))bold(b))
+= bold(0)
 $
 である。
 ]
