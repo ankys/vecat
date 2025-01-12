@@ -27,7 +27,7 @@
 
 #outline()
 
-// #include "01_introduction.typ"
+#include "01_vecmat.typ"
 // #include "02_measure.typ"
 // #include "03_pdiff.typ"
 // #include "04_iint.typ"
@@ -35,4 +35,4 @@
 // #include "06_calc.typ"
 // #include "07_limint.typ"
 
-// #bibliography("99_ref.yml")
+#bibliography("99_ref.yml")
