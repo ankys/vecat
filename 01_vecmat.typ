@@ -118,17 +118,21 @@ $
 となる。
 
 #proposition([三重積の公式])[
-三次元ベクトル$bold(a), bold(b), bold(c)$に対してスカラー三重積
+三次元ベクトル$bold(a), bold(b), bold(c)$に対して、
+スカラー三重積の公式
 $
 bold(a) dot (bold(b) times bold(c))
 = bold(b) dot (bold(c) times bold(a))
 = bold(c) dot (bold(a) times bold(b))
 = det mat(bold(a), bold(b), bold(c))
 $
-とベクトル三重積
+とベクトル三重積の公式
 $
 bold(a) times (bold(b) times bold(c))
-= (bold(a) dot bold(c))bold(b)-(bold(a) dot bold(b))bold(c)
+= (bold(a) dot bold(c))bold(b)-(bold(a) dot bold(b))bold(c),
+quad
+(bold(a) times bold(b)) times bold(c)
+= (bold(a) dot bold(c))bold(b)-(bold(b) dot bold(c))bold(a)
 $
 が成り立つ。
 ]
@@ -162,11 +166,18 @@ bold(a) times (bold(b) times bold(c))
 &= (bold(a) dot bold(c))bold(b)-(bold(a) dot bold(b))bold(c)
 $
 である。
+もう一つの公式は
+$
+(bold(a) times bold(b)) times bold(c)
+= -bold(c) times (bold(a) times bold(b))
+= -(bold(c) dot bold(b))bold(a)+(bold(c) dot bold(a))bold(b)
+$
+よりわかる。
 ]
 
 #remark[
-ベクトル三重積の式より、ベクトルの外積について結合法則は成り立たず、$bold(a) dot (bold(b) times bold(c))$と$(bold(a) dot bold(b)) times bold(c)$は一般には異なる。
-なお、次のヤコビ恒等式からこの二つの差もベクトル三重積で得られることがわかる。
+ベクトル三重積の式より、ベクトルの外積について結合法則は成り立たず、$bold(a) times (bold(b) times bold(c))$と$(bold(a) times bold(b)) times bold(c)$は一般には異なる。
+なお、この二つの差もベクトル三重積で得られることがわかる。
 ]
 
 #proposition([ヤコビ恒等式])[
@@ -183,6 +194,53 @@ $
 bold(a) times (bold(b) times bold(c))+bold(b) times (bold(c) times bold(a))+bold(c) times (bold(a) times bold(b))
 = ((bold(a) dot bold(c))bold(b)-(bold(a) dot bold(b))bold(c))+((bold(b) dot bold(a))bold(c)-(bold(b) dot bold(c))bold(a))+((bold(c) dot bold(b))bold(a)-(bold(c) dot bold(a))bold(b))
 = bold(0)
+$
+である。
+]
+
+#proposition([四重積の公式])[
+三次元ベクトル$bold(a), bold(b), bold(c), bold(d)$に対して、
+スカラー四重積の公式
+$
+(bold(a) times bold(b)) dot (bold(c) times bold(d))
+= (bold(a) dot bold(c))(bold(b) dot bold(d))-(bold(a) dot bold(d))(bold(b) dot bold(c))
+= det mat(bold(a) dot bold(c), bold(a) dot bold(d); bold(b) dot bold(c), bold(b) dot bold(d))
+$
+とベクトル四重積の公式
+$
+(bold(a) times bold(b)) times (bold(c) times bold(d))
+= [bold(a), bold(b), bold(d)]bold(c)-[bold(a), bold(b), bold(c)]bold(d)
+= [bold(a), bold(c), bold(d)]bold(d)-[bold(b), bold(c), bold(d)]bold(a)
+$
+が成り立つ。
+]
+
+#proof[
+スカラー四重積の公式は、スカラー三重積の公式を使って
+$
+(bold(a) times bold(b)) dot (bold(c) times bold(d))
+= bold(d) dot ((bold(a) times bold(b)) times bold(c))
+= [bold(a) times bold(b), bold(c), bold(d)]
+$
+であることからベクトル三重積の公式より
+$
+(bold(a) times bold(b)) dot (bold(c) times bold(d))
+= bold(d) dot ((bold(a) dot bold(c))bold(b)-(bold(b) dot bold(c))bold(a))
+= (bold(a) dot bold(c))(bold(b) dot bold(d))-(bold(a) dot bold(d))(bold(b) dot bold(c))
+$
+となる。
+
+ベクトル四重積の公式は、ベクトル三重積の公式を使って
+$
+(bold(a) times bold(b)) times (bold(c) times bold(d))
+= ((bold(a) times bold(b)) dot bold(d))bold(c)-((bold(a) times bold(b)) dot bold(c))bold(d)
+= ([bold(a), bold(b), bold(d)]bold(c)-[bold(a), bold(b), bold(c)]bold(d),
+$
+また
+$
+(bold(a) times bold(b)) times (bold(c) times bold(d))
+= (bold(a) dot (bold(c) times bold(d)))bold(b)-(bold(b) dot (bold(c) times bold(d)))bold(a)
+= [bold(a), bold(c), bold(d)]bold(b)-[bold(b), bold(c), bold(d)]bold(a)
 $
 である。
 ]
