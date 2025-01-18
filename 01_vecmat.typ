@@ -258,3 +258,23 @@ $
 この公式は、（$[bold(a), bold(b), bold(c)] eq.not 0$のとき）三次元ベクトルの分解に使える。
 また、クラメルの公式に他ならない。
 ]
+
+== ベクトルのテンソル積
+
+ベクトルのテンソル積は二つのベクトルから行列を作る演算である。
+$M$次元ベクトル$bold(a) = (a_1, a_2, dots, a_M)$と$N$次元ベクトル$bold(b) = (b_1, b_2, dots, b_M)$の_テンソル積_は$M times N$行列
+$
+bold(a) times.circle bold(b)
+= mat(a_1 b_1, dots.c, a_1 b_N; dots.v, dots.down, dots.v; a_M b_1, dots.c, a_M b_N)
+$
+として定義される。
+ベクトルを縦ベクトルつまり$N times 1$行列として扱うとき、テンソル積は転置と行列積を使って
+$
+bold(a) times.circle bold(b) = bold(a) bold(b)^T
+$
+と書くこともある。
+なお、内積は
+$
+bold(a) dot bold(b) = bold(a)^T bold(b)
+$
+である。
