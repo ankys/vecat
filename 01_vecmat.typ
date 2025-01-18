@@ -34,6 +34,13 @@ $
 として定義される。
 実数体上の内積なので、スカラー積と同じものである。
 
+ベクトル$bold(a) = (a_1, a_2, dots, a_N)$の_ノルム_または_大きさ_あるいは_長さ_は内積を使って
+$
+norm(bold(a)) = sqrt(bold(a) dot bold(a)) = sqrt(a_1^2+a_2^2+dots+a_N^2)
+$
+として定義される。
+ノルムは非負の実数（スカラー）であり、ベクトルの長さを表す。
+
 == 行列
 
 本テキストの_行列_とは$M, N = 1, 2, 3, dots$として実数体上の$M times N$行列のことであり$RR^(M times N)$の元のことである。
@@ -262,7 +269,7 @@ $
 == ベクトルのテンソル積
 
 ベクトルのテンソル積は二つのベクトルから行列を作る演算である。
-$M$次元ベクトル$bold(a) = (a_1, a_2, dots, a_M)$と$N$次元ベクトル$bold(b) = (b_1, b_2, dots, b_M)$の_テンソル積_は$M times N$行列
+$M$次元ベクトル$bold(a) = (a_1, a_2, dots, a_M)$と$N$次元ベクトル$bold(b) = (b_1, b_2, dots, b_N)$の_テンソル積_は$M times N$行列
 $
 bold(a) times.circle bold(b)
 = mat(a_1 b_1, dots.c, a_1 b_N; dots.v, dots.down, dots.v; a_M b_1, dots.c, a_M b_N)
