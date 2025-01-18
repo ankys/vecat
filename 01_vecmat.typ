@@ -210,7 +210,7 @@ $
 $
 (bold(a) times bold(b)) times (bold(c) times bold(d))
 = [bold(a), bold(b), bold(d)]bold(c)-[bold(a), bold(b), bold(c)]bold(d)
-= [bold(a), bold(c), bold(d)]bold(d)-[bold(b), bold(c), bold(d)]bold(a)
+= [bold(a), bold(c), bold(d)]bold(b)-[bold(b), bold(c), bold(d)]bold(a)
 $
 が成り立つ。
 ]
@@ -243,4 +243,18 @@ $
 = [bold(a), bold(c), bold(d)]bold(b)-[bold(b), bold(c), bold(d)]bold(a)
 $
 である。
+]
+
+#remark[
+スカラー四重積の公式は$3$次元でのビネ・コーシーの恒等式である。
+ビネ・コーシーの恒等式とその拡張であるコーシー・ビネの定理については@r_n24b を参照のこと。
+
+ベクトル四重積の二つの表示が等しいことを利用すると、
+$
+[bold(a), bold(b), bold(c)]bold(d)
+= [bold(d), bold(b), bold(c)]bold(a)+[bold(a), bold(d), bold(c)]bold(b)+[bold(a), bold(b), bold(d)]bold(c)
+$
+という公式を得る。
+この公式は、（$[bold(a), bold(b), bold(c)] eq.not 0$のとき）三次元ベクトルの分解に使える。
+また、クラメルの公式に他ならない。
 ]
