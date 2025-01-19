@@ -5,3 +5,9 @@ r_n24b:
   title: 線形代数学１
   url: https://github.com/ankys/lina1t/releases/download/20241230/lina1t-20241230.pdf
   date: 2024-12-30
+r_n24c:
+  type: Web
+  author: 中安淳
+  title: 微分積分学２
+  url: https://github.com/ankys/calc2t/releases/download/20250104/calc2t-20250104.pdf
+  date: 2025-1-4
