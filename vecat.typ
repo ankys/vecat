@@ -28,7 +28,7 @@
 #outline()
 
 #include "01_vecmat.typ"
-// #include "02_measure.typ"
+#include "02_field.typ"
 // #include "03_pdiff.typ"
 // #include "04_iint.typ"
 // #include "05_fseq.typ"
