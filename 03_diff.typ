@@ -133,6 +133,25 @@ $
 となる。
 ]
 
+$N$次元ベクトル変数$M$次元ベクトル値関数$bold(f)(bold(x))$の_勾配_は各成分に関する偏微分を並べた$M times N$型の行列値関数である。
+つまり$bold(f)(bold(x)) = vec(f^1 (bold(x)), dots.v, f^M (bold(x)))$、$bold(x) = vec(x_1, dots.v, x_N)$として、
+$
+gradient bold(f)(bold(x))
+= mat(f^1_(x_1) (bold(x)), dots.c, f^1_(x_N) (bold(x)); dots.v, dots.down, dots.v; f^M_(x_1) (bold(x)), dots.c, f^M_(x_N) (bold(x)))
+$
+と定義する。
+各成分$x_i$は全て独立であることに注意する。
+
+#proposition([ベクトル変数ベクトル値の合成関数の微分])[
+$N$次元ベクトル変数$M$次元ベクトル値関数$bold(f)(bold(x))$と$N$次元ベクトル族$bold(x)(t)$の合成関数$bold(f)(bold(x)(t))$の微分は
+$
+(bold(f)(bold(x)(t)))'
+= gradient bold(f)(bold(x)(t))bold(x)'(t)
+= vec(sum_(i=1)^N f^1_(x_i) (bold(x)(t)) x_i '(t), dots.v, sum_(i=1)^N f^M_(x_i) (bold(x)(t)) x_i '(t))
+$
+となる。
+]
+
 == 行列変数関数の勾配
 
 $M times N$型の行列変数関数$f(X)$の_勾配_は各成分に関する偏微分を並べた$M times N$型の行列値関数である。
@@ -211,3 +230,17 @@ $
 $
 が成り立つ。
 ]
+
+== スカラー場の勾配
+
+== ベクトル場の発散
+
+== ベクトル場の回転
+
+== 高階の微分について
+
+== 多変数関数について
+
+== 曲線の微分
+
+== 曲面の微分
