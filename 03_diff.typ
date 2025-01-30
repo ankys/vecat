@@ -2,6 +2,8 @@
 #import "deps/theorem.typ": thmrules, theorem, proposition, definition, example, remark, proof
 #show: thmrules.with()
 
+#let grad = $op("grad")$
+
 = 微分
 
 == 一変数関数の微分
@@ -232,6 +234,17 @@ $
 ]
 
 == スカラー場の勾配
+
+$N$次元点にスカラーを対応させる$N$次元スカラー場$f(x)$の_勾配_は、ベクトル変数関数と同様に、各成分に関する偏微分を並べた$N$次元ベクトル値関数である。
+つまり$x = (x_1, dots, x_N)$として、
+$
+gradient f(x)
+= (f_(x_1) (x), dots, f_(x_N) (x))
+$
+と定義する。
+各成分$x_i$は全て独立であることに注意する。
+$N$次元スカラー場の勾配$gradient f$は$N$次元点ごとに$N$次元ベクトルを対応させるので$N$次元ベクトル場であることに注意する。
+勾配$gradient f$は$arrow(gradient) f$や$grad f$とも表される。
 
 == ベクトル場の発散
 
