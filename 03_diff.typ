@@ -2,11 +2,12 @@
 #import "deps/theorem.typ": thmrules, theorem, proposition, definition, example, remark, proof
 #show: thmrules.with()
 
-#import "@preview/physica:0.9.4": grad, div, curl
+#import "@preview/physica:0.9.4": grad, div, curl, laplacian
 #let opgrad = $op("grad")$
 #let opdiv = $op("div")$
 #let opcurl = $op("curl")$
 #let oprot = $op("rot")$
+#let hesse = $op("H")$
 
 = 微分
 
@@ -261,7 +262,7 @@ div bold(f)(x)
 $
 と定義する。
 $bold(f)$の成分の番号と偏微分する変数の番号が一致することに注意する。
-発散$div bold(f)$は$N$次元点ごとにスカラーを対応させるのでスカラー場であることに注意する。
+発散$div bold(f)$は$N$次元点ごとにスカラーを対応させるので$N$次元スカラー場であることに注意する。
 発散$div bold(f)$は$opdiv bold(f)$とも表される。
 
 $div bold(f)$において内積の記号が現れるのは、微分の記号$grad$を仮想的にベクトル
@@ -295,6 +296,26 @@ $
 と考えると外積の計算規則と回転の定義が一致するためである。
 
 == 高階の微分について
+
+$N$次元スカラー場$f(x)$の勾配を取って得られる$N$次元ベクトル場$grad f(x)$の勾配を取って得られる$N$次正方行列$gradient grad f(x)$を$f$の_ヘッセ行列_または_ヘシアン_という。
+ヘッセ行列は通常$hesse f(x)$などで表される。
+つまり
+$
+hesse f(x) = mat(f_(x_1 x_1) (x), dots.c, f_(x_1 x_N) (x); dots.v, dots.down, dots.v; f_(x_N x_1) (x), dots.c, f_(x_N x_N) (x))
+$
+となる。
+ヘッセ行列については@r_n24c ですでに紹介されていて、主に極値の判定に使われる。
+
+$N$次元スカラー場$f(x)$の勾配を取って得られる$N$次元ベクトル場$grad f(x)$の発散を取って得られる$N$次元スカラー場$div grad f(x)$を$f$の_ラプラシアン_という。
+ラプラシアン$div grad f$は通常$laplacian f$や$laplace f$などで表される。
+つまり
+$
+laplacian f(x)
+= laplace f(x)
+= f_(x_1 x_1) (x)+dots+f_(x_N x_N) (x)
+$
+となる。
+ラプラシアンは偏微分方程式の中でしばしば現れる。
 
 == 多変数関数について
 
