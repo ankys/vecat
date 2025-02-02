@@ -297,7 +297,7 @@ $
 
 == 高階の微分について
 
-$N$次元スカラー場$f(x)$の勾配を取って得られる$N$次元ベクトル場$grad f(x)$の勾配を取って得られる$N$次正方行列$gradient grad f(x)$を$f$の_ヘッセ行列_または_ヘシアン_という。
+$N$次元スカラー場$f$の勾配を取って得られる$N$次元ベクトル場$grad f$の勾配を取って得られる$N$次正方行列$gradient grad f$の点$x$での行列値$gradient grad f(x)$を$f$の_ヘッセ行列_または_ヘシアン_という。
 ヘッセ行列は通常$hesse f(x)$などで表される。
 つまり
 $
@@ -306,7 +306,7 @@ $
 となる。
 ヘッセ行列については@r_n24c ですでに紹介されていて、主に極値の判定に使われる。
 
-$N$次元スカラー場$f(x)$の勾配を取って得られる$N$次元ベクトル場$grad f(x)$の発散を取って得られる$N$次元スカラー場$div grad f(x)$を$f$の_ラプラシアン_という。
+$N$次元スカラー場$f$の勾配を取って得られる$N$次元ベクトル場$grad f$の発散を取って得られる$N$次元スカラー場$div grad f$を$f$の_ラプラシアン_という。
 ラプラシアン$div grad f$は通常$laplacian f$や$laplace f$などで表される。
 つまり
 $
@@ -315,7 +315,48 @@ laplacian f(x)
 = f_(x_1 x_1) (x)+dots+f_(x_N x_N) (x)
 $
 となる。
-ラプラシアンは偏微分方程式の中でしばしば現れる。
+このラプラシアンはスカラー場からスカラー場に移すが、ベクトル場に対しても各成分についてラプラシアンを取ることでベクトル場のラプラシアンが定義される。
+つまり$N$次元ベクトル場$bold(f)(x) = vec(f^1 (x), dots.v, f^N (x))$に対して
+$
+laplacian bold(f)(x)
+= laplace bold(f)(x)
+= vec(laplacian f^1 (x), dots.v, laplacian f^N (x))
+= vec(f^1_(x_1 x_1) (x)+dots+f^1_(x_N x_N) (x), dots.v, f^N_(x_1 x_1) (x)+dots+f^N_(x_N x_N) (x))
+$
+とする。
+ラプラシアンは偏微分方程式の中でしばしば現れる重要な作用素である。
+
+$N$次元ベクトル場$bold(f)$の発散を取って得られる$N$次元スカラー場$div bold(f)$の勾配を取って得られる$N$次ベクトル場$grad div bold(f)$は特に名前はないが、上記二つでは表せない二階の微分であり$opgrad opdiv bold(f)$と表される。
+特に$opdiv opgrad = laplacian$と$opgrad opdiv$は定義される対象も計算結果も異なることに注意する。
+
+上の三つの微分は$opgrad$と$opdiv$の組み合わせで得られる高階の微分であり独立したものとみなせるが、
+$oprot$を使った高階の微分は$opgrad$と$opdiv$の組み合わせで表される。
+
+#proposition([微分の組み合わせ])[
+1. 任意の三次元スカラー場$f$に対して、$curl grad f = bold(0)$が成り立つ。
+2. 任意の三次元ベクトル場$bold(f)$に対して、$div curl bold(f) = 0$が成り立つ。
+3. 任意の三次元ベクトル場$bold(f)$に対して、$curl curl bold(f) = grad div bold(f)-laplacian bold(f)$が成り立つ。
+
+つまり、
+$
+oprot opgrad = 0,
+quad opdiv oprot = 0,
+quad oprot oprot = opgrad opdiv-opdiv opgrad
+$
+とみなせる。
+]
+
+#proof[
+$grad$をベクトルのように考え$grad = vec(partial_(x_1), partial_(x_2), partial_(x_3))$としてスカラー三重積やベクトル三重積の公式のアイデアを使う。
+
+1. 同じベクトルの外積は零であることから、$curl grad = bold(0)$がわかる。
+2. スカラー三重積で同じベクトルが二つ入っていたら零であることから、$div curl bold(f) = 0$がわかる。
+3. ベクトル三重積の公式より、
+$
+curl curl bold(f) = grad(div bold(f))-(div grad)bold(f) = grad div bold(f)-laplacian bold(f)
+$
+がわかる。
+]
 
 == 多変数関数について
 
