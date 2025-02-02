@@ -5,6 +5,8 @@
 #import "@preview/physica:0.9.4": grad, div, curl
 #let opgrad = $op("grad")$
 #let opdiv = $op("div")$
+#let opcurl = $op("curl")$
+#let oprot = $op("rot")$
 
 = 微分
 
@@ -275,6 +277,22 @@ $
 が成り立つ。
 
 == ベクトル場の回転
+
+三次元点に三次元ベクトルを対応させる三次元ベクトル場$bold(f)(x)$の_回転_は各成分に関する偏微分を足し合わせた三次元ベクトル値関数である。
+つまり$x = (x_1, x_2, x_3)$, $bold(f)(x) = vec(f^1 (x), f^2 (x), f^3 (x))$として
+$
+curl bold(f)(x)
+= vec(f^3_(x_2) (x)-f^2_(x_3) (x), f^1_(x_3) (x)-f^3_(x_1) (x), f^2_(x_1) (x)-f^1_(x_2) (x))
+$
+と定義する。
+回転$curl bold(f)$は三次元点ごとに三次元ベクトルを対応させるので三次元ベクトル場であることに注意する。
+回転$curl bold(f)$は$opcurl bold(f)$や$oprot bold(f)$とも表される。
+
+$curl bold(f)$において外積の記号が現れるのは、微分の記号$grad$を仮想的にベクトル
+$
+grad = vec(partial_(x_1), partial_(x_2), partial_(x_3))
+$
+と考えると外積の計算規則と回転の定義が一致するためである。
 
 == 高階の微分について
 
