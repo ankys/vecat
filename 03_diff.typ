@@ -2,7 +2,9 @@
 #import "deps/theorem.typ": thmrules, theorem, proposition, definition, example, remark, proof
 #show: thmrules.with()
 
-#let grad = $op("grad")$
+#import "@preview/physica:0.9.4": grad, div, curl
+#let opgrad = $op("grad")$
+#let opdiv = $op("div")$
 
 = 微分
 
@@ -238,15 +240,39 @@ $
 $N$次元点にスカラーを対応させる$N$次元スカラー場$f(x)$の_勾配_は、ベクトル変数関数と同様に、各成分に関する偏微分を並べた$N$次元ベクトル値関数である。
 つまり$x = (x_1, dots, x_N)$として、
 $
-gradient f(x)
+grad f(x)
+= gradient f(x)
 = (f_(x_1) (x), dots, f_(x_N) (x))
 $
 と定義する。
 各成分$x_i$は全て独立であることに注意する。
-$N$次元スカラー場の勾配$gradient f$は$N$次元点ごとに$N$次元ベクトルを対応させるので$N$次元ベクトル場であることに注意する。
-勾配$gradient f$は$arrow(gradient) f$や$grad f$とも表される。
+$N$次元スカラー場の勾配$grad f$は$N$次元点ごとに$N$次元ベクトルを対応させるので$N$次元ベクトル場であることに注意する。
+勾配$grad f$は$arrow(gradient) f$や$opgrad f$とも表される。
 
 == ベクトル場の発散
+
+$N$次元点に$N$次元ベクトルを対応させる$N$次元ベクトル場$bold(f)(x)$の_発散_は各成分に関する偏微分を足し合わせたスカラー値関数である。
+つまり$x = (x_1, dots, x_N)$, $bold(f)(x) = vec(f^1 (x), dots.v, f^N (x))$として
+$
+div bold(f)(x)
+= f^1_(x_1) (x)+dots+f^N_(x_N) (x)
+$
+と定義する。
+$bold(f)$の成分の番号と偏微分する変数の番号が一致することに注意する。
+発散$div bold(f)$は$N$次元点ごとにスカラーを対応させるのでスカラー場であることに注意する。
+発散$div bold(f)$は$opdiv bold(f)$とも表される。
+
+$div bold(f)$において内積の記号が現れるのは、微分の記号$grad$を仮想的にベクトル
+$
+grad = vec(partial_(x_1), dots.v, partial_(x_N))
+$
+と考えると内積の計算規則と発散の定義が一致するためである。
+また、発散は$N$次元ベクトル場$bold(f)(x)$を勾配を取って得られる$N$次正方行列値関数$gradient bold(f)$の跡を取ったものとしても特徴づけられることに注意する。
+つまり
+$
+div bold(f)(x) = tr gradient bold(f)(x)
+$
+が成り立つ。
 
 == ベクトル場の回転
 
