@@ -30,9 +30,9 @@
 #include "01_vecmat.typ"
 #include "02_field.typ"
 #include "03_diff.typ"
-// #include "04_iint.typ"
-// #include "05_fseq.typ"
-// #include "06_calc.typ"
-// #include "07_limint.typ"
+#include "04_int.typ"
+#include "05_intdiff.typ"
+#include "06_diffint.typ"
+#include "07_physics.typ"
 
 #bibliography("99_ref.yml")
