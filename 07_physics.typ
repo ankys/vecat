@@ -2,11 +2,39 @@
 #import "deps/theorem.typ": thmrules, theorem, proposition, definition, example, remark, proof
 #show: thmrules.with()
 
-#import "@preview/physica:0.9.4": grad, div, curl, laplacian
-#let opgrad = $op("grad")$
-#let opdiv = $op("div")$
-#let opcurl = $op("curl")$
-#let oprot = $op("rot")$
-#let hesse = $op("H")$
+#import "@preview/physica:0.9.4": dd
 
 = 物理学への応用
+
+== 逆二乗の法則の積分
+
+ニュートン力学において、三次元空間に二つの質点$1, 2$があるとしてそれぞれ位置が$P_1, P_2$で質量が$m_1, m_2$とすると、二つの質点にはそれぞれ万有引力と呼ばれる引力が働き、その大きさは$m_1$と$m_2$と二点間の距離$r = d(P_1, P_2)$の逆二乗に比例するのであった。
+つまり、質点$2$に働く質点$1$からの万有引力は向きも考慮に入れると
+$
+bold(F)
+= -G (m_1 m_2)/r^2 arrow(P_1 P_2)/abs(arrow(P_1 P_2))
+= -G m_1 m_2 arrow(P_1 P_2)/abs(arrow(P_1 P_2))^3
+$
+となり、質点$1$に働く質点$2$からの万有引力はその逆向きになる。
+
+太陽と地球のように質点間の距離$r$が十分大きく質点が点とみなせる時はこれで良いかもしれないが、
+地球と地表上の物体のように質点間の距離が小さくなると、質点は点とみなすことはできない。
+そのような場合、地表上の物体を点とみなしたとして、その点に働く力はどのようになるのだろうか。
+地球をたくさんの質点の集まりとしてそれぞれからの物体に働く万有引力の合計を求めることで、地表上の物体に働く力を求めることができる。
+この合計の力はまさしくベクトル場の積分となり、本テキストの重要な応用の一つである。
+
+仮に地球が中心が$P_1 in RR^3$にあり半径が$R > 0$の点集合$B_R (P_1)$でその中で密度が一定値$rho > 0$とすると、
+位置$P_2 in RR^3$にある質量$m_2$の物体に働く万有引力の合計は
+$
+bold(F)
+= -integral_(B_R (P_1)) G m_2 rho arrow(P P_2)/abs(arrow(P P_2))^3 dd(P)
+= G m_2 rho integral_(B_R (P_1)) arrow(P_2 P)/abs(arrow(P_2 P))^3 dd(P)
+$
+となる。
+ここで地球の中心を原点だと思って$arrow(P_2 P) = arrow(P_1 P)-arrow(P_1 P_2) = bold(x)-bold(a)$とおくと、
+この積分の計算は
+$
+integral_(B_R) (bold(x)-bold(a))/abs(bold(x)-bold(a))^3 dd(bold(x))
+$
+に帰着される。
+空間の次元が$3$で、被積分関数の大きさは$1/abs(bold(x)-bold(a))^2$と$-2$次で足すと正なので、この積分は$bold(a)$が$B_R$の中に入っている、つまり$P_2 in B_R (P_1)$の場合でも収束することに注意する。
