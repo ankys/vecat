@@ -2,7 +2,7 @@
 #import "deps/theorem.typ": thmrules, theorem, proposition, definition, example, remark, proof
 #show: thmrules.with()
 
-#import "@preview/physica:0.9.4": dd, pdv
+#import "@preview/physica:0.9.4": dd, pdv, grad
 
 = 物理学への応用
 
@@ -108,3 +108,43 @@ $
 とあたかも地球の全質量が中心$P_1$に集中している場合の万有引力と同じになる。
 このことは物体が地表にある場合つまり$a = R$のときも同じで万有引力の合計は地球の全質量が中心$P_1$に集中している場合の万有引力と同じになる。
 一方、物体が地球の内部にある場合つまり$a < R$のときは地球の中心から$a$以上離れている部分の質量が無視されてそれ以下の部分の質量のみが物体に働く万有引力の合計となる。
+
+この積分$bold(I)$は、被積分関数がスカラーポテンシャルを持つので、ガウス・グリーンの定理を使うことでも計算できる。
+つまり、
+$
+grad (-1/abs(bold(x)-bold(a))) = (bold(x)-bold(a))/abs(bold(x)-bold(a))^3
+$
+に注目すると
+$
+bold(I)
+= integral_(B_R) (bold(x)-bold(a))/abs(bold(x)-bold(a))^3 dd(bold(x))
+= integral_(partial B_R) (-1/abs(bold(x)-bold(a))) bold(n)(bold(x)) dd(S(bold(x)))
+$
+となる。
+ここで$partial B_R$は$B_R$の境界つまり球面で、
+その上の点$bold(x) in partial B_R$において外向き単位法線ベクトルは$bold(n)(bold(x)) = bold(x)/abs(bold(x))$であり、
+$bold(x) = (R cos theta, R sin theta cos phi, R sin theta sin phi)$とパラメータ付けると面積要素は$dd(S(bold(x))) = R^2 sin theta$なので、
+$
+bold(I)
+= -integral_(partial B_R) 1/abs(bold(x)-bold(a)) bold(x)/abs(bold(x)) dd(S(bold(x)))
+= -integral_0^pi integral_0^(2 pi) (R^2 sin theta)/sqrt((R cos theta-a)^2+R^2 sin^2 theta) vec(cos theta, sin theta cos phi, sin theta sin phi) dd(phi)dd(theta)
+$
+である。
+$phi$での積分を実行すると、
+$
+bold(I)
+= -2 pi integral_0^pi (R^2 cos theta sin theta)/sqrt(R^2-2 a R cos theta+a^2) dd(theta) vec(1, 0, 0)
+=: I vec(1, 0, 0).
+$
+先ほどと同様に$t = cos theta$, $s = sqrt(R^2-2 a R t+a^2)$と置換すると、
+$
+I
+&= 2 pi R^2 integral_(abs(R-a))^(R+a) (R^2+a^2-s^2)/(2 a R s) (-2 s)/(2 a R) dd(s)
+= -pi/a^2 integral_(abs(R-a))^(R+a) (R^2+a^2-s^2) dd(s) \
+&= -2/3 pi/a^2 ((R^3+a^3)-abs(R^3-a^3)) \
+&= cases(
+	-4/3 pi R^3 1/a^2"," (a >= R),
+	-4/3 pi a"," (a <= R)
+)
+$
+となり、先ほどと同じ結果が得られる。
