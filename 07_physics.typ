@@ -2,7 +2,7 @@
 #import "deps/theorem.typ": thmrules, theorem, proposition, definition, example, remark, proof
 #show: thmrules.with()
 
-#import "@preview/physica:0.9.4": dd, pdv, grad
+#import "@preview/physica:0.9.4": dd, pdv, grad, div
 
 = 物理学への応用
 
@@ -186,3 +186,55 @@ bold(F)
 = -G m_(1, abs(arrow(P_1 P_2))) m_2 arrow(P_1 P_2)/abs(arrow(P_1 P_2))^3
 $
 となることがわかる。
+
+以降では一般の密度関数$rho(bold(x))$に対して積分の計算がある程度できることを示す。
+そのために重要な視点が積分$bold(F)$が物体の位置$P_2$に依っている、つまり
+$
+bold(I)(bold(a))
+= integral_(RR^3) rho(bold(x)) (bold(x)-bold(a))/abs(bold(x)-bold(a))^3 dd(bold(x))
+$
+とできることである。
+そしてこれにはスカラーポテンシャルが存在する。
+実際、被積分関数について
+$
+grad_(bold(a)) (rho(bold(x))/abs(bold(x)-bold(a)))
+= rho(bold(x)) (bold(x)-bold(a))/abs(bold(x)-bold(a))^3
+$
+なので、積分記号の下での微分により
+$
+Phi(bold(a)) = -integral_(RR^3) rho(bold(x))/abs(bold(x)-bold(a)) dd(bold(x))
+$
+とおくと$bold(I)(bold(a)) = -grad Phi(bold(a))$である。
+したがってこのスカラーポテンシャル$Phi(bold(a))$を求めることができれば、万有引力の合計$bold(F)$も求めることができる。
+このスカラーポテンシャル$Phi$のことを重力ポテンシャルあるいはニュートンポテンシャルという。
+ここでもう一階$bold(a)$で微分して、ラプラシアン$laplace Phi(bold(a)) = -div bold(I)(bold(a))$を考える。
+先に被積分関数の微分を計算すると$bold(a) eq.not bold(x)$において
+$
+laplace_(bold(a)) (rho(bold(x))/abs(bold(x)-bold(a)))
+&= rho(bold(x)) div_(bold(a)) (bold(x)-bold(a))/abs(bold(x)-bold(a))^3
+= rho(bold(x)) tr grad_(bold(a)) (bold(x)-bold(a))/abs(bold(x)-bold(a))^3 \
+&= rho(bold(x)) tr [-I_3/abs(bold(x)-bold(a))^3+3 ((bold(x)-bold(a)) times.circle (bold(x)-bold(a)))/abs(bold(x)-bold(a))^5]
+= rho(bold(x)) [-3/abs(bold(x)-bold(a))^3+3 1/abs(bold(x)-bold(a))^3] \
+&= 0
+$
+であり、
+$bold(a) = bold(x)$においては発散してしまうので、
+この微分は通常の関数としては捉えられず特に微分と積分の交換が保証されない。
+しかしながら交換できるとして$bold(x)$についての積分を、
+$(bold(x)-bold(a))/abs(bold(x)-bold(a))^3$の形から$bold(a)$での発散を$bold(x)$での発散にマイナスしたもので置き換え、
+$bold(x) eq.not bold(a)$で被積分関数が$0$より$rho(bold(x))$を$rho(bold(a))$で置き換えると、
+$integral_(RR^3) laplace_(bold(a)) (rho(bold(x))/abs(bold(x)-bold(a))) dd(bold(x))$は次の値で代用できる。
+$
+-integral_(B_r (bold(a))) rho(bold(a)) div_(bold(x)) (bold(x)-bold(a))/abs(bold(x)-bold(a))^3 dd(bold(x))
+= -rho(bold(a)) integral_(partial B_r (bold(a))) (bold(x)-bold(a))/abs(bold(x)-bold(a))^3 dot (bold(x)-bold(a))/abs(bold(x)-bold(a)) dd(S(bold(x)))
+= -rho(bold(a)) integral_(partial B_r (bold(a))) 1/r^2 dd(S(bold(x)))
+= -4 pi rho(bold(a)).
+$
+つまり以上の置き換えのもとで
+$
+laplace Phi(bold(a)) = -4 pi rho(bold(a))
+$
+が得られる。
+この$Phi$についての方程式はポアソン方程式と呼ばれる偏微分方程式の一種で、
+$rho$が多少変な関数であっても解を持つことが知られている。
+つまり密度関数$rho(bold(x))$が与えられたらポアソン方程式を解いてその勾配を計算することで万有引力の合計$bold(F)$を求めることができる。
