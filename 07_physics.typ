@@ -148,3 +148,41 @@ I
 )
 $
 となり、先ほどと同じ結果が得られる。
+
+以降ではこの万有引力の合計の計算の拡張を試みる。
+先ほどの設定の中で特に現実的でないと思われるのは、地球の密度が一定であるところである。
+そこで地球の密度$rho$が位置$P$によって変化する場合として、地球の中心$P_1$からの相対的な位置といえる$bold(x) = arrow(P_1 P)$に依存する密度関数$rho(bold(x)) = rho(arrow(P_1 P))$を考える。
+$P$は空間全体を動くとして$rho$はある半径より離れたところでは$0$とする。
+先ほどの設定では$rho(bold(x))$が$abs(bold(x)) <= R$では一定値$rho$でそうでない場合は$0$であった。
+密度が位置に依存する場合の万有引力の合計は
+$
+bold(F)
+= -integral_(RR^3) G m_2 rho(arrow(P_1 P)) arrow(P P_2)/abs(arrow(P P_2))^3 dd(P)
+= G m_2 bold(I),
+quad
+bold(I)
+= integral_(RR^3) rho(bold(x)) (bold(x)-bold(a))/abs(bold(x)-bold(a))^3 dd(bold(x))
+$
+となる。
+この積分$bold(I)$の具体的な計算は一般の密度関数$rho(bold(x))$に対しては難しいが、
+半径$abs(bold(x))$のみに依存する場合の密度関数（これも$rho$で表し$rho(bold(x)) = rho(abs(bold(x)))$とする）に対しては最初のように球座標変換による計算が可能である。
+それを行うと$bold(a) = vec(a, 0, 0)$として
+$
+bold(I)
+= -(2 pi)/a^2 integral_0^oo (1-(r-a)/(abs(r-a)))rho(r)r^2 dd(r) vec(1, 0, 0)
+= -(4 pi)/a^2 integral_0^a rho(r)r^2 dd(r) vec(1, 0, 0).
+$
+ここで地球の質量のうち中心からの距離が$a$以下の部分あるものを集めた量は
+$
+m_(1, a)
+= integral_(B_a) rho(bold(x)) dd(bold(x))
+= integral_0^a integral_0^pi integral_0^(2 pi) rho(r) r^2 sin theta dd(phi)dd(theta)dd(r)
+= 4 pi integral_0^a rho(r) r^2 dd(r)
+$
+なので、
+この場合もやはり万有引力の合計は$P_1$から$P_2$よりも離れた部分は無視してそれ以内の部分の質量がすべて$P_1$に集中しているとみなして
+$
+bold(F)
+= -G m_(1, abs(arrow(P_1 P_2))) m_2 arrow(P_1 P_2)/abs(arrow(P_1 P_2))^3
+$
+となることがわかる。
