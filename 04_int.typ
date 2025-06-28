@@ -57,13 +57,36 @@ $1$個のパラメータで定義される曲線を積分領域にするよう�
 $
 integral_X f(x) dd(V(x)),
 quad integral_X f(x) dd(S(x)),
-quad integral_X f(x) dd(s(x)),
+quad integral_X f(x) dd(l(x)),
 quad integral_X f(x) dd(c(x))
 $
-などと表現されるが、
-$X$を見ればそれがそれがどの積分か判定できるので、$V, S, s, c$は省略されうる。
+などと表現され、
+$V, S, l, c$はそれぞれ体素、面素、線素、点素と呼ばれるが、
+$X$を見ればそれがそれがどの積分か判定できるので、$V, S, l, c$は省略されうる。
 また、積分する変数$x$もわかる場合には$dd(x)$は省略されることに注意する。
 
 == 線積分
+
+線積分は$N$次元空間の中で$1$個のパラメータで定義される曲線を積分領域にするような積分である。
+特にスカラー場の線積分は曲線のグラフがなすカーテン状の領域の面積を求めるような積分である。
+曲線を$c(t)$ ($t in [a, b]$)とする。
+
+スカラー場$f$に対する線積分は次のように定義される。
+$
+integral_c f
+= integral_a^b f(c(t)) abs(dot(c)(t)) dd(t).
+$
+ベクトル場$bold(f)$に対する線積分は次のように定義される。
+$
+integral_c bold(f)
+= integral_a^b bold(f)(c(t)) dot dot(c)(t) dd(t).
+$
+
+曲線の始点と終点が同じである閉曲線の場合、つまり$c(a) = c(b)$の場合は線積分は周回積分と呼ばれ、
+$
+integral.cont_c f,
+quad integral.cont_c bold(f)
+$
+と表す。
 
 == 面積分
