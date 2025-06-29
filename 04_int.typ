@@ -2,7 +2,7 @@
 #import "deps/theorem.typ": thmrules, theorem, proposition, definition, example, remark, proof
 #show: thmrules.with()
 
-#import "@preview/physica:0.9.4": grad, div, curl, laplacian, dd
+#import "@preview/physica:0.9.4": grad, div, curl, laplacian, dd, dv
 #let opgrad = $op("grad")$
 #let opdiv = $op("div")$
 #let opcurl = $op("curl")$
@@ -69,23 +69,76 @@ $X$を見ればそれがそれがどの積分か判定できるので、$V, S, l
 
 線積分は$N$次元空間の中で$1$個のパラメータで定義される曲線を積分領域にするような積分である。
 特にスカラー場の線積分は曲線のグラフがなすカーテン状の領域の面積を求めるような積分である。
-曲線を$c(t)$ ($t in [a, b]$)とする。
+$N$次元空間上の曲線を$c(t)$ ($t in [a, b]$)とする。
 
-スカラー場$f$に対する線積分は次のように定義される。
+$N$次元スカラー場$f$に対する線積分は次のように定義される。
 $
 integral_c f
 = integral_a^b f(c(t)) abs(dot(c)(t)) dd(t).
 $
-ベクトル場$bold(f)$に対する線積分は次のように定義される。
+
+この積分は曲線のパラメータの取り方によらない。
+#proposition([スカラー場に対する線積分のパラメータの独立性])[
+$phi = phi(tau): [alpha, beta] |-> [a, b]$, $phi(alpha) = a$, $phi(beta) = b$をパラメータの取り替えとすると、
+$
+integral_(c compose phi) f = integral_c f
+$
+が成り立つ。
+]
+#proof[
+計算すると合成関数の微分法$dv(, tau)(c compose phi)(tau) = dot(c)(phi(tau))dot(phi)(tau)$と置換積分$t = phi(tau)$より
+$
+integral_(c compose phi) f
+= integral_alpha^beta f(c(phi(tau))) abs(dot(c)(phi(tau))) dot(phi)(tau) dd(tau)
+= integral_a^b f(c(t)) abs(dot(c)(t)) dd(t)
+= integral_c f
+$
+である。
+]
+
+そのため点集合としての曲線$C$を与えるとその上の線積分が一意に定義され、
+$
+integral_C f
+$
+と表記される。
+具体的な値を求める場合には曲線$C$のパラメータ表示$c(t)$を与えて計算すればよい。
+
+$N$次元ベクトル場$bold(f)$に対する線積分は次のように定義される。
 $
 integral_c bold(f)
 = integral_a^b bold(f)(c(t)) dot dot(c)(t) dd(t).
 $
 
+この積分も曲線のパラメータの取り方によらない。
+#proposition([ベクトル場に対する線積分のパラメータの独立性])[
+$phi = phi(tau): [alpha, beta] |-> [a, b]$, $phi(alpha) = a$, $phi(beta) = b$をパラメータの取り替えとすると、
+$
+integral_(c compose phi) bold(f) = integral_c bold(f)
+$
+が成り立つ。
+]
+#proof[
+計算すると合成関数の微分法$dv(, tau)(c compose phi)(tau) = dot(c)(phi(tau))dot(phi)(tau)$と置換積分$t = phi(tau)$より
+$
+integral_(c compose phi) bold(f)
+= integral_alpha^beta bold(f)(c(phi(tau))) dot dot(c)(phi(tau)) dot(phi)(tau) dd(tau)
+= integral_a^b bold(f)(c(t)) dot dot(c)(t) dd(t)
+= integral_c bold(f)
+$
+である。
+]
+
+こちらも点集合としての曲線$C$（と始点・終点）を与えるとその上の線積分が一意に定義され、
+$
+integral_C bold(f)
+$
+と表記される。
+具体的な値を求める場合には曲線$C$のパラメータ表示$c(t)$を与えて計算すればよい。
+
 曲線の始点と終点が同じである閉曲線の場合、つまり$c(a) = c(b)$の場合は線積分は周回積分と呼ばれ、
 $
-integral.cont_c f,
-quad integral.cont_c bold(f)
+integral.cont_C f,
+quad integral.cont_C bold(f)
 $
 と表す。
 
